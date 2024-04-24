@@ -1,35 +1,34 @@
 # Image-API
 
-To aplikacje, która pobiera obrazki z S3, a następnie zwraca je w odpowiedzi na zapytanie HTTP.
+This application retrieves images from an S3 bucket and serves them in response to HTTP requests.
 
-## Lambda
+## AWS Lambda
 
-Do wdrożenia aplikacji na AWS wykorzystano funkcję lambda.
-Jest to funkcja triggerowana zapytaniem HTTP
+The application is deployed on AWS using a Lambda function. This function is triggered by HTTP requests.
 
-## Zmienne środowiskowe
+## Environment Variables
 
-Aplikacja wykorzystuje zmienne środowiskowe, które należy ustawić w AWS.
+The application utilizes the following environment variables, which need to be configured on AWS:
 
 - `BOOKS_AWS_ACCESS_KEY_ID`
 - `BOOKS_AWS_SECRET_ACCESS_KEY`
 - `BOOKS_AWS_REGION`
 - `BUCKET_NAME`
 
-Uwaga: Aby uniknąć przekazywania access key, secret acccess key oraz regionu, można użyć odpowiedniego Service Account.
+**Note:** To avoid explicitly passing the access key, secret access key, and region, it is recommended to use an appropriate Service Account.
 
 ## Pipeline
+
+To perform code linting, execute:
 
 ```bash
 make lint
 ```
 
-Aby utworzyć plik `app.zip` należy wykonać polecenie:
+To create the `app.zip` file, which is to be uploaded to AWS as the Lambda function, use:
 
 ```bash
 make build
 ```
 
-Powyższy plik, należy wgrać na AWS jako funkcję lambda.
-
-
+This file should then be uploaded to AWS to deploy the Lambda function.
